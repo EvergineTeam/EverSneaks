@@ -1,0 +1,15 @@
+!Evergine.Assets.Exporters.SceneMetaFile,Evergine.Assets
+Id: 8cd1d5b1-28b7-4b11-ade4-ff50c2319719
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAsRaw: false
+Profiles: {}
+Source:
+  Header:
+    Id: eaaf170a-0dc1-440c-8270-4e3228ff033b
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  SceneData:
+    Id: 3979751c-e4f9-4db7-8bc1-9c718d3261ee

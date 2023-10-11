@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EverSneaks.MAUI.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:evergine="clr-namespace:EverSneaks.MAUI.Evergine">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <evergine:EvergineView x:Name="evergineView" Grid.Row="0" />
+        <StackLayout Grid.Row="1">
+            <Label HorizontalTextAlignment="Center" Text="This is Evergine running within MAUI" />
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Button
+                    Command="{Binding ColorCommand}"
+                    CommandParameter="gray"
+                    Text="Gray" />
+                <Button
+                    Command="{Binding ColorCommand}"
+                    CommandParameter="red"
+                    Text="Red" />
+                <Button
+                    Command="{Binding ColorCommand}"
+                    CommandParameter="green"
+                    Text="Green" />
+                <Button
+                    Command="{Binding ColorCommand}"
+                    CommandParameter="blue"
+                    Text="Blue" />
+
+            </StackLayout>
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,29 @@
+!Evergine.Assets.Exporters.ModelMetaFile,Evergine.Assets
+Id: fe46cf2e-8216-42f7-bbc7-1d4c01ea7f83
+Clips: []
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAnimations: true
+ExportAsRaw: false
+GenerateTangentSpace: true
+Profiles: {}
+Source:
+  Header:
+    Id: dd5d8daa-31fb-48d7-aa77-20df7180cf9b
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  ModelInfo:
+    Id: 41e6a196-ab0e-4319-b25f-36dd5cd0a867
+    AnimationTracks: []
+    EmbeddedResources: null
+    Materials:
+      - Item1: NikeShoe
+        Item2: 7a2d0c57-9fe5-4c00-a6e0-a14075506044
+    Nodes:
+      - Sketchfab_model
+      - Sketchfab_model.Collada visual scene group
+      - Sketchfab_model.Collada visual scene group.shoe
+      - Sketchfab_model.Collada visual scene group.shoe.defaultMaterial
+SwapWindingOrder: false

@@ -1,0 +1,33 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverSneaks.MAUI", "EverSneaks.MAUI\EverSneaks.MAUI.csproj", "{BCFD4FD5-36DA-421D-A0CF-6331EDB95BEB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EverSneaks", "EverSneaks\EverSneaks.csproj", "{6DEA9C6A-667D-49F8-89FA-40A1F595B48B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCFD4FD5-36DA-421D-A0CF-6331EDB95BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCFD4FD5-36DA-421D-A0CF-6331EDB95BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCFD4FD5-36DA-421D-A0CF-6331EDB95BEB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BCFD4FD5-36DA-421D-A0CF-6331EDB95BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCFD4FD5-36DA-421D-A0CF-6331EDB95BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCFD4FD5-36DA-421D-A0CF-6331EDB95BEB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6DEA9C6A-667D-49F8-89FA-40A1F595B48B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DEA9C6A-667D-49F8-89FA-40A1F595B48B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DEA9C6A-667D-49F8-89FA-40A1F595B48B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DEA9C6A-667D-49F8-89FA-40A1F595B48B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F925F91C-69BD-48DC-A39A-63F045514047}
+	EndGlobalSection
+EndGlobal
