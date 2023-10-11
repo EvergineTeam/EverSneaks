@@ -1,0 +1,29 @@
+!Evergine.Assets.Exporters.ModelMetaFile,Evergine.Assets
+Id: 0444e71e-f7e6-4843-8070-349d8bf1f418
+Clips: []
+DefaultProfile:
+  ExcludeAsset: false
+  Name: null
+  Platform: Undefined
+ExportAnimations: true
+ExportAsRaw: false
+GenerateTangentSpace: true
+Profiles: {}
+Source:
+  Header:
+    Id: 52bb1690-aa17-4a52-acb7-f1b49d2a5b9d
+    IsCompressed: true
+  LastModified: 0001-01-01T00:00:00.0000000
+  ModelInfo:
+    Id: 89dd37d6-0858-4105-ae46-8bc16671891a
+    AnimationTracks: []
+    EmbeddedResources: null
+    Materials:
+      - Item1: MAT_Laces_L
+        Item2: 4ae3cd97-4dc5-40b6-a1df-83da9175c111
+      - Item1: MAT_Shoe_L
+        Item2: 9f9af782-fb42-4c23-99c5-e7b678156b61
+    Nodes:
+      - Laces_L_MAT_Laces_L_0
+      - Shoe_L_MAT_Shoe_L_0
+SwapWindingOrder: false

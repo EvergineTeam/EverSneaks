@@ -45,10 +45,10 @@ namespace EverSneaks.Services
 
             // Load materials
             var assetsService = Application.Current.Container.Resolve<AssetsService>();
-            this.grayMaterial = assetsService.Load<Material>(EvergineContent.Models.sneakers.Materials.GrayMat);
-            this.redMaterial = assetsService.Load<Material>(EvergineContent.Models.sneakers.Materials.RedMat);
-            this.greenMaterial = assetsService.Load<Material>(EvergineContent.Models.sneakers.Materials.GreenMat);
-            this.blueMaterial = assetsService.Load<Material>(EvergineContent.Models.sneakers.Materials.BlueMat);
+            this.grayMaterial = assetsService.Load<Material>(EvergineContent.Models.AirJordan_Embedded.Materials.GrayMat);
+            this.redMaterial = assetsService.Load<Material>(EvergineContent.Models.AirJordan_Embedded.Materials.RedMat);
+            //this.greenMaterial = assetsService.Load<Material>(EvergineContent.Models.AirJordan_Embedded.Materials.GreenMat);
+            //this.blueMaterial = assetsService.Load<Material>(EvergineContent.Models.AirJordan_Embedded.Materials.BlueMat);
 
             //  Select material component
             var screenContextManager = Application.Current.Container.Resolve<ScreenContextManager>();
