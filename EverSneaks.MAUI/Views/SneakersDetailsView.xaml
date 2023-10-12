@@ -42,11 +42,12 @@
             <Style x:Key="NumberStyle" TargetType="Label">
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="Center" />
-                <Setter Property="FontFamily" Value="LatoRegular"/>
+                <Setter Property="FontFamily" Value="LatoRegular" />
+                <Setter Property="TextColor" Value="{StaticResource Black}" />
             </Style>
 
             <Style x:Key="PanelStyle" TargetType="Grid">
-                <Setter Property="Margin" Value="40" />
+                <Setter Property="Margin" Value="20" />
             </Style>
 
             <Style x:Key="ColorPanelStyle" TargetType="StackLayout">
@@ -66,29 +67,29 @@
             <Style x:Key="LabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource Black}" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontFamily" Value="LatoRegular"/>
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="LatoRegular" />
             </Style>
 
             <Style x:Key="PriceStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource Black}" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="FontSize" Value="40" />
+                <Setter Property="FontSize" Value="32" />
             </Style>
 
             <Style x:Key="AddCartStyle" TargetType="Border">
                 <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
                 <Setter Property="HorizontalOptions" Value="End" />
                 <Setter Property="WidthRequest" Value="160" />
-                <Setter Property="StrokeShape" Value="RoundRectangle 30"/>
+                <Setter Property="StrokeShape" Value="RoundRectangle 30" />
             </Style>
 
             <Style x:Key="AddCartTextStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="{StaticResource White}"/>
-                <Setter Property="FontFamily" Value="LatoRegular"/>
-                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+                <Setter Property="FontFamily" Value="LatoRegular" />
+                <Setter Property="FontSize" Value="14" />
             </Style>
 
         </ResourceDictionary>
@@ -100,17 +101,18 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="60*" />
                 <RowDefinition Height="40*" />
+                <RowDefinition Height="60" />
             </Grid.RowDefinitions>
 
             <evergine:EvergineView x:Name="evergineView" Grid.Row="0" />
 
             <Grid Grid.Row="1" Style="{StaticResource PanelStyle}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40" />
+                    <RowDefinition Height="30" />
                     <RowDefinition Height="60" />
-                    <RowDefinition Height="40" />
+                    <RowDefinition Height="30" />
                     <RowDefinition Height="60" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Label
@@ -169,10 +171,7 @@
                         <Label Style="{StaticResource NumberStyle}" Text="US 10" />
                     </Border>
                 </StackLayout>
-                <Grid
-                    Grid.Row="4"
-                    Margin="0,0,0,40"
-                    VerticalOptions="End">
+                <Grid Grid.Row="4" VerticalOptions="End">
                     <Label Style="{StaticResource PriceStyle}" Text="$169.90" />
                     <Border Style="{StaticResource AddCartStyle}">
                         <Label Style="{StaticResource AddCartTextStyle}" Text="Add to Cart" />
@@ -180,12 +179,12 @@
                 </Grid>
             </Grid>
 
+            <controls:TabView Grid.Row="2" Style="{StaticResource TabViewStyle}" />
+
         </Grid>
 
         <Grid Style="{StaticResource TopSectionStyle}">
             <Image Source="user_picture.png" Style="{StaticResource UserStyle}" />
         </Grid>
-
-        <controls:TabView Style="{StaticResource TabViewStyle}" />
     </Grid>
 </ContentPage>
