@@ -4,14 +4,14 @@ using System.Windows.Input;
 
 namespace EverSneaks.MAUI.ViewModels
 {
-    public class MainPageViewModel
+    public class SneakersDetailsViewModel
     {
         public ICommand ColorCommand { get; set; }
 
         private EvergineView evergineView;
         private ControllerService controllerService;
 
-        public MainPageViewModel(EvergineView evergineView) 
+        public SneakersDetailsViewModel(EvergineView evergineView) 
         {
             this.evergineView = evergineView;
             this.controllerService = this.evergineView.Application.Container.Resolve<ControllerService>();
@@ -23,7 +23,7 @@ namespace EverSneaks.MAUI.ViewModels
                         case "red":
                             this.controllerService.Color = ControllerService.SneakerColor.Red;
                             break;
-                        case "green":
+                        case "orange":
                             this.controllerService.Color = ControllerService.SneakerColor.Orange;
                             break;
                         case "blue":

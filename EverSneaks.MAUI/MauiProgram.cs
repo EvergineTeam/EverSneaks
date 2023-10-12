@@ -13,6 +13,8 @@ namespace EverSneaks.MAUI
                 .UseMauiEvergine()
                 .ConfigureFonts(fonts =>
                 {
+                    fonts.AddFont("Lato-Bold.ttf", "LatoBold");
+                    fonts.AddFont("Lato-Regular.ttf", "LatoRegular");
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });

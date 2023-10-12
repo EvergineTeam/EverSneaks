@@ -26,54 +26,163 @@
                 <Setter Property="VerticalOptions" Value="Start" />
             </Style>
 
-            <Style x:Key="HomeLogoStyle" TargetType="Image">
-                <Setter Property="HorizontalOptions" Value="Start" />
-                <Setter Property="Margin" Value="0,12" />
-            </Style>
-
             <Style x:Key="UserStyle" TargetType="Image">
                 <Setter Property="HorizontalOptions" Value="End" />
+            </Style>
+
+            <Style x:Key="RoundBorderStyle" TargetType="Border">
+                <Setter Property="StrokeShape" Value="RoundRectangle 20" />
+                <Setter Property="StrokeThickness" Value="0" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Gray}" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="70" />
+                <Setter Property="Margin" Value="6, 0" />
+            </Style>
+
+            <Style x:Key="NumberStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontFamily" Value="LatoRegular"/>
+            </Style>
+
+            <Style x:Key="PanelStyle" TargetType="Grid">
+                <Setter Property="Margin" Value="40" />
+            </Style>
+
+            <Style x:Key="ColorPanelStyle" TargetType="StackLayout">
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Spacing" Value="10" />
+            </Style>
+
+            <Style x:Key="ColorStyle" TargetType="Border">
+                <Setter Property="StrokeShape" Value="Ellipse" />
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="StrokeThickness" Value="0" />
+            </Style>
+
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource Black}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontFamily" Value="LatoRegular"/>
+            </Style>
+
+            <Style x:Key="PriceStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource Black}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="40" />
+            </Style>
+
+            <Style x:Key="AddCartStyle" TargetType="Border">
+                <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="WidthRequest" Value="160" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 30"/>
+            </Style>
+
+            <Style x:Key="AddCartTextStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="{StaticResource White}"/>
+                <Setter Property="FontFamily" Value="LatoRegular"/>
+                <Setter Property="FontSize" Value="18"/>
             </Style>
 
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid BackgroundColor="Black">
+    <Grid BackgroundColor="White">
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="60*" />
+                <RowDefinition Height="40*" />
             </Grid.RowDefinitions>
 
             <evergine:EvergineView x:Name="evergineView" Grid.Row="0" />
-            <StackLayout Grid.Row="1">
-                <Label HorizontalTextAlignment="Center" Text="This is Evergine running within MAUI" />
-                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-                    <Button
-                        Command="{Binding ColorCommand}"
-                        CommandParameter="gray"
-                        Text="Gray" />
-                    <Button
-                        Command="{Binding ColorCommand}"
-                        CommandParameter="red"
-                        Text="Red" />
-                    <Button
-                        Command="{Binding ColorCommand}"
-                        CommandParameter="green"
-                        Text="Green" />
-                    <Button
-                        Command="{Binding ColorCommand}"
-                        CommandParameter="blue"
-                        Text="Blue" />
 
+            <Grid Grid.Row="1" Style="{StaticResource PanelStyle}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    HorizontalTextAlignment="Start"
+                    Style="{StaticResource LabelStyle}"
+                    Text="Color:" />
+
+                <StackLayout Grid.Row="1" Style="{StaticResource ColorPanelStyle}">
+                    <Border BackgroundColor="Gray" Style="{StaticResource ColorStyle}">
+                        <Button
+                            BackgroundColor="Transparent"
+                            Command="{Binding ColorCommand}"
+                            CommandParameter="gray" />
+                    </Border>
+                    <Border BackgroundColor="Blue" Style="{StaticResource ColorStyle}">
+                        <Button
+                            BackgroundColor="Transparent"
+                            Command="{Binding ColorCommand}"
+                            CommandParameter="blue" />
+                    </Border>
+                    <Border BackgroundColor="Red" Style="{StaticResource ColorStyle}">
+                        <Button
+                            BackgroundColor="Transparent"
+                            Command="{Binding ColorCommand}"
+                            CommandParameter="red" />
+                    </Border>
+                    <Border BackgroundColor="Orange" Style="{StaticResource ColorStyle}">
+                        <Button
+                            BackgroundColor="Transparent"
+                            Command="{Binding ColorCommand}"
+                            CommandParameter="orange" />
+                    </Border>
                 </StackLayout>
-            </StackLayout>
+
+                <Label
+                    Grid.Row="2"
+                    HorizontalTextAlignment="Start"
+                    Style="{StaticResource LabelStyle}"
+                    Text="Size:" />
+
+                <StackLayout Grid.Row="3" Orientation="Horizontal">
+                    <Border Style="{StaticResource RoundBorderStyle}">
+                        <Label Style="{StaticResource NumberStyle}" Text="US 6" />
+                    </Border>
+
+                    <Border Style="{StaticResource RoundBorderStyle}">
+                        <Label Style="{StaticResource NumberStyle}" Text="US 7" />
+                    </Border>
+
+                    <Border Style="{StaticResource RoundBorderStyle}">
+                        <Label Style="{StaticResource NumberStyle}" Text="US 8" />
+                    </Border>
+
+                    <Border Style="{StaticResource RoundBorderStyle}">
+                        <Label Style="{StaticResource NumberStyle}" Text="US 10" />
+                    </Border>
+                </StackLayout>
+                <Grid
+                    Grid.Row="4"
+                    Margin="0,0,0,40"
+                    VerticalOptions="End">
+                    <Label Style="{StaticResource PriceStyle}" Text="$169.90" />
+                    <Border Style="{StaticResource AddCartStyle}">
+                        <Label Style="{StaticResource AddCartTextStyle}" Text="Add to Cart" />
+                    </Border>
+                </Grid>
+            </Grid>
 
         </Grid>
 
         <Grid Style="{StaticResource TopSectionStyle}">
-            <Image Source="eversneaks_logo.png" Style="{StaticResource HomeLogoStyle}" />
             <Image Source="user_picture.png" Style="{StaticResource UserStyle}" />
         </Grid>
 

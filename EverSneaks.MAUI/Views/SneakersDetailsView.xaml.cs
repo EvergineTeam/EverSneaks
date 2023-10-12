@@ -11,6 +11,6 @@ public partial class SneakersDetailsView : ContentPage
 		InitializeComponent();
         this.evergineApplication = new MyApplication();
         this.evergineView.Application = this.evergineApplication;
-        this.BindingContext = new MainPageViewModel(this.evergineView);
+        this.BindingContext = new SneakersDetailsViewModel(this.evergineView);
     }
 }

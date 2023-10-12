@@ -16,11 +16,11 @@
             </Style>
 
             <Style x:Key="BackgroundStyle" TargetType="Image">
-                <Setter Property="Aspect" Value="AspectFill" />
+                <Setter Property="VerticalOptions" Value="Start" />
             </Style>
 
             <Style x:Key="TopSectionStyle" TargetType="Grid">
-                <Setter Property="HeightRequest" Value="64" />
+                <Setter Property="HeightRequest" Value="56" />
                 <Setter Property="Margin" Value="30" />
                 <Setter Property="VerticalOptions" Value="Start" />
             </Style>
@@ -38,14 +38,66 @@
     </ContentPage.Resources>
 
     <Grid BackgroundColor="Black">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="1.25*" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
 
-        <Image Source="gallery_background.png" Style="{StaticResource BackgroundStyle}" />
+            <Image
+                Grid.Row="0"
+                Source="gallery_background.png"
+                Style="{StaticResource BackgroundStyle}" />
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    StrokeThickness="0">
+                    <Image Aspect="AspectFill" Source="sneakers1.png" />
+                </Border>
+
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    StrokeThickness="0">
+                    <Image Aspect="AspectFill" Source="sneakers2.png" />
+                </Border>
+
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    StrokeThickness="0">
+                    <Image Aspect="AspectFill" Source="sneakers3.png" />
+                </Border>
+
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Padding="0"
+                    StrokeThickness="0">
+                    <Image Aspect="AspectFill" Source="sneakers4.png" />
+                </Border>
+
+            </Grid>
+
+            <controls:TabView Grid.Row="2" Style="{StaticResource TabViewStyle}" />
+        </Grid>
 
         <Grid Style="{StaticResource TopSectionStyle}">
             <Image Source="eversneaks_logo.png" Style="{StaticResource HomeLogoStyle}" />
             <Image Source="user_picture.png" Style="{StaticResource UserStyle}" />
         </Grid>
 
-        <controls:TabView Style="{StaticResource TabViewStyle}" />
     </Grid>
 </ContentPage>
