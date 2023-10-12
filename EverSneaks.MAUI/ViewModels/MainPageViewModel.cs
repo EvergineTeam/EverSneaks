@@ -24,7 +24,7 @@ namespace EverSneaks.MAUI.ViewModels
                             this.controllerService.Color = ControllerService.SneakerColor.Red;
                             break;
                         case "green":
-                            this.controllerService.Color = ControllerService.SneakerColor.Green;
+                            this.controllerService.Color = ControllerService.SneakerColor.Orange;
                             break;
                         case "blue":
                             this.controllerService.Color = ControllerService.SneakerColor.Blue;

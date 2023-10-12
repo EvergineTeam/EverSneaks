@@ -77,10 +77,15 @@ namespace EverSneaks.Components
         private bool animating;
         private float initialRotationY;
 
-        private readonly Color violetColor = new Color("#6F64EDFF");
-        private readonly Color blueColor = new Color("#2EB6FDFF");
-        private readonly Color pinkColor = new Color("#F92EFDFF");
-        private readonly Color orangeColor = new Color("#FD9D2EFF");
+        //private readonly Color violetColor = new Color("#6F64EDFF");
+        //private readonly Color blueColor = new Color("#2EB6FDFF");
+        //private readonly Color pinkColor = new Color("#F92EFDFF");
+        //private readonly Color orangeColor = new Color("#FD9D2EFF");
+
+        private readonly Color color1 = new Color("#e6e5e5");
+        private readonly Color color2 = new Color("#b1252e");
+        private readonly Color color3 = new Color("#e38210");
+        private readonly Color color4 = new Color("#026da7");
 
         public CameraBehavior()
         {
@@ -282,14 +287,6 @@ namespace EverSneaks.Components
             this.animating = true;
             this.animation?.Cancel();
 
-            ////this.animation = new ActionWorkAction(() => this.initialRotationY = this.Transform.LocalRotation.Y)
-            ////                            .ContinueWith(new FloatAnimationWorkAction(this.Owner, 0, 1, TimeSpan.FromSeconds(1.0f), EaseFunction.ExponentialOutEase, (f) =>
-            ////                            {
-            ////                                var rotation = this.Transform.LocalRotation;
-            ////                                rotation.Y = this.initialRotationY + (2 * (MathHelper.Pi * f));
-            ////                                this.Transform.LocalRotation = rotation;
-            ////                            }).ContinueWithAction(() => this.animating = false));
-
             this.animation = this.Owner.Scene.CreateParallelWorkActions(
                     new ActionWorkAction(() => this.initialRotationY = this.Transform.LocalRotation.Y)
                                         .ContinueWith(new FloatAnimationWorkAction(this.Owner, 0, 1, TimeSpan.FromSeconds(1.0f), EaseFunction.ExponentialOutEase, (f) =>
@@ -305,16 +302,16 @@ namespace EverSneaks.Components
                         switch (sneakerColor)
                         {
                             case SneakerColor.Gray:                                
-                                camera.BackgroundColor = violetColor;
+                                camera.BackgroundColor = color1;
                                 break;
                             case SneakerColor.Red:                                
-                                camera.BackgroundColor = blueColor;
+                                camera.BackgroundColor = color2;
                                 break;
-                            case SneakerColor.Green:                                
-                                camera.BackgroundColor = pinkColor;
+                            case SneakerColor.Orange:                                
+                                camera.BackgroundColor = color3;
                                 break;
                             case SneakerColor.Blue:                                
-                                camera.BackgroundColor = orangeColor;
+                                camera.BackgroundColor = color4;
                                 break;
                         }
                     })

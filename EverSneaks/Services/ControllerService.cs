@@ -15,14 +15,14 @@ namespace EverSneaks.Services
         private CameraBehavior cameraBehavior;
         private Material grayMaterial;
         private Material redMaterial;
-        private Material greenMaterial;
+        private Material orangeMaterial;
         private Material blueMaterial;
 
         public enum SneakerColor
         {
             Gray,
             Red,
-            Green,
+            Orange,
             Blue,
         };
 
@@ -47,8 +47,8 @@ namespace EverSneaks.Services
             var assetsService = Application.Current.Container.Resolve<AssetsService>();
             this.grayMaterial = assetsService.Load<Material>(EvergineContent.Models.AirJordan_Embedded.Materials.GrayMat);
             this.redMaterial = assetsService.Load<Material>(EvergineContent.Models.AirJordan_Embedded.Materials.RedMat);
-            //this.greenMaterial = assetsService.Load<Material>(EvergineContent.Models.AirJordan_Embedded.Materials.GreenMat);
-            //this.blueMaterial = assetsService.Load<Material>(EvergineContent.Models.AirJordan_Embedded.Materials.BlueMat);
+            this.orangeMaterial = assetsService.Load<Material>(EvergineContent.Models.AirJordan_Embedded.Materials.OrangeMat);
+            this.blueMaterial = assetsService.Load<Material>(EvergineContent.Models.AirJordan_Embedded.Materials.BlueMat);
 
             //  Select material component
             var screenContextManager = Application.Current.Container.Resolve<ScreenContextManager>();
@@ -71,8 +71,8 @@ namespace EverSneaks.Services
                 case SneakerColor.Red:
                     this.materialComponent.Material = this.redMaterial;
                     break;
-                case SneakerColor.Green:
-                    this.materialComponent.Material = this.greenMaterial;
+                case SneakerColor.Orange:
+                    this.materialComponent.Material = this.orangeMaterial;
                     break;
                 case SneakerColor.Blue:
                     this.materialComponent.Material = this.blueMaterial;
