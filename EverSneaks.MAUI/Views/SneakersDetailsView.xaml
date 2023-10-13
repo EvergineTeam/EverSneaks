@@ -35,7 +35,7 @@
                 <Setter Property="StrokeThickness" Value="0" />
                 <Setter Property="BackgroundColor" Value="{StaticResource Gray}" />
                 <Setter Property="HeightRequest" Value="40" />
-                <Setter Property="WidthRequest" Value="70" />
+                <Setter Property="WidthRequest" Value="64" />
                 <Setter Property="Margin" Value="6, 0" />
             </Style>
 
@@ -43,7 +43,9 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="FontFamily" Value="LatoRegular" />
+                <Setter Property="FontSize" Value="14" />
                 <Setter Property="TextColor" Value="{StaticResource Black}" />
+                <Setter Property="Padding" Value="10" />
             </Style>
 
             <Style x:Key="PanelStyle" TargetType="Grid">
@@ -53,15 +55,25 @@
             <Style x:Key="ColorPanelStyle" TargetType="StackLayout">
                 <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="Orientation" Value="Horizontal" />
-                <Setter Property="Margin" Value="10" />
-                <Setter Property="Spacing" Value="10" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Spacing" Value="6" />
             </Style>
 
             <Style x:Key="ColorStyle" TargetType="Border">
                 <Setter Property="StrokeShape" Value="Ellipse" />
-                <Setter Property="WidthRequest" Value="40" />
-                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="24" />
+                <Setter Property="HeightRequest" Value="24" />
                 <Setter Property="StrokeThickness" Value="0" />
+                <Setter Property="Margin" Value="6" />
+            </Style>
+
+            <Style x:Key="SelectedColorImageStyle" TargetType="Image">
+                <Setter Property="Source" Value="check.png" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="WidthRequest" Value="9" />
+                <Setter Property="HeightRequest" Value="8" />
+                <Setter Property="IsVisible" Value="False" />
             </Style>
 
             <Style x:Key="LabelStyle" TargetType="Label">
@@ -122,30 +134,64 @@
                     Text="Color:" />
 
                 <StackLayout Grid.Row="1" Style="{StaticResource ColorPanelStyle}">
-                    <Border BackgroundColor="Gray" Style="{StaticResource ColorStyle}">
-                        <Button
-                            BackgroundColor="Transparent"
-                            Command="{Binding ColorCommand}"
-                            CommandParameter="gray" />
-                    </Border>
-                    <Border BackgroundColor="Blue" Style="{StaticResource ColorStyle}">
-                        <Button
-                            BackgroundColor="Transparent"
-                            Command="{Binding ColorCommand}"
-                            CommandParameter="blue" />
-                    </Border>
-                    <Border BackgroundColor="Red" Style="{StaticResource ColorStyle}">
-                        <Button
-                            BackgroundColor="Transparent"
-                            Command="{Binding ColorCommand}"
-                            CommandParameter="red" />
-                    </Border>
-                    <Border BackgroundColor="Orange" Style="{StaticResource ColorStyle}">
-                        <Button
-                            BackgroundColor="Transparent"
-                            Command="{Binding ColorCommand}"
-                            CommandParameter="orange" />
-                    </Border>
+                    
+                    <Grid>
+                        <Border 
+                            Style="{StaticResource ColorStyle}"
+                            BackgroundColor="#181818" />
+                        <Image x:Name="selectedGrayImage"
+                            Style="{StaticResource SelectedColorImageStyle}"
+                            IsVisible="True" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding ColorCommand}"
+                                CommandParameter="gray"
+                                Tapped="OnColorTapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                    
+                    <Grid>
+                        <Border 
+                            Style="{StaticResource ColorStyle}"
+                            BackgroundColor="#4585A9" />
+                        <Image x:Name="selectedBlueImage"
+                            Style="{StaticResource SelectedColorImageStyle}" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding ColorCommand}"
+                                CommandParameter="blue"
+                                Tapped="OnColorTapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                    
+                    <Grid>
+                        <Border 
+                            Style="{StaticResource ColorStyle}"
+                            BackgroundColor="#EE4451" />
+                        <Image x:Name="selectedRedImage"
+                            Style="{StaticResource SelectedColorImageStyle}" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding ColorCommand}"
+                                CommandParameter="red"
+                                Tapped="OnColorTapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                    
+                    <Grid>
+                        <Border 
+                            Style="{StaticResource ColorStyle}"
+                            BackgroundColor="#F29108" />
+                        <Image x:Name="selectedOrangeImage"
+                            Style="{StaticResource SelectedColorImageStyle}" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding ColorCommand}"
+                                CommandParameter="orange"
+                                Tapped="OnColorTapped" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                    
                 </StackLayout>
 
                 <Label
