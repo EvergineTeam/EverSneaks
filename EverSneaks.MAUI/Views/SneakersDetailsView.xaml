@@ -112,7 +112,7 @@
                     <RowDefinition Height="60" />
                     <RowDefinition Height="30" />
                     <RowDefinition Height="60" />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <Label

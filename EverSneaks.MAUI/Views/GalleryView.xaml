@@ -50,7 +50,7 @@
                 Source="gallery_background.png"
                 Style="{StaticResource BackgroundStyle}" />
 
-            <Grid Grid.Row="1">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
