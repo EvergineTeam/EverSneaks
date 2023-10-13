@@ -1,29 +1,23 @@
-# SneakerApp
+# EverSneaks - MAUI and Evergine showcase
 
 ## Introduction
 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.
+This showcase demonstrates the seamless integration of __MAUI__ and __Evergine__. Leveraging the latest Evergine release, you can access a new MAUI project template, enabling the creation of exceptional mobile applications for both Android and iOS. This template facilitates the development of captivating UIs with MAUI, allowing for the inclusion of a 3D canvas in your views to render engaging 3D content.
 
-## Getting Started
+This showcase serves as an illustrative example, highlighting the synergistic capabilities achievable through the combination of these cutting-edge technologies.
 
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
+![Showcase screenshot](Screenshots/image.jpg)
 
-1. Installation process
-2. Software dependencies
-3. Latest releases
-4. API references
+The Air Jordan sneakers 3D model used in this showcase was sourced from _Sketchfab_, courtesy of [makoto](https://sketchfab.com/3d-models/air-jordan-1-a4b434181fbb48008ad460722fd53725)
+
+All images, names, and icons for this showcase were meticulously curated by the Plain Concepts design team, utilizing __AI-generated content__.
+
 
 ## Build and Test
 
-TODO: Describe and show how to build your code and run the tests.
+* Required Visual Studio 2022 with .NET7 support
 
-## Contribute
-
-TODO: Explain how other users and developers can contribute to make your code better.
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops).
-
-----
+---
 Powered by **[Evergine](http://www.evergine.com)**
 
 LET'S CONNECT!
