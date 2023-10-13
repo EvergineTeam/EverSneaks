@@ -119,6 +119,11 @@
 
                     <Image Source="white_heart.png" Style="{StaticResource HeartStyle}" />
                 </Grid>
+                    
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding GoToDetailCommand}" />
+                </Grid.GestureRecognizers>
 
             </Grid>
 
