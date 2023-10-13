@@ -15,6 +15,7 @@ namespace EverSneaks.MAUI
                 {
                     fonts.AddFont("Lato-Bold.ttf", "LatoBold");
                     fonts.AddFont("Lato-Regular.ttf", "LatoRegular");
+                    fonts.AddFont("Roboto-Bold.ttf", "RobotoBold");
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });

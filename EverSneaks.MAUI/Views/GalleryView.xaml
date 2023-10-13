@@ -34,6 +34,19 @@
                 <Setter Property="HorizontalOptions" Value="End" />
             </Style>
 
+            <Style x:Key="NameStyle" TargetType="Label">
+                <Setter Property="Margin" Value="15" />
+                <Setter Property="FontFamily" Value="RobotoBold" />
+                <Setter Property="FontSize" Value="26" />
+            </Style>
+
+            <Style x:Key="HeartStyle" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="Margin" Value="15" />
+            </Style>
+
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -50,7 +63,7 @@
                 Source="gallery_background.png"
                 Style="{StaticResource BackgroundStyle}" />
 
-            <Grid>
+            <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -60,34 +73,52 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Border
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    StrokeThickness="0">
+                <Grid Grid.Row="0" Grid.Column="0">
+
                     <Image Aspect="AspectFill" Source="sneakers1.png" />
-                </Border>
 
-                <Border
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    StrokeThickness="0">
+                    <Label Style="{StaticResource NameStyle}" Text="Black" />
+
+                    <Image Source="black_heart.png" Style="{StaticResource HeartStyle}" />
+
+                </Grid>
+
+
+                <Grid Grid.Row="0" Grid.Column="1">
+
                     <Image Aspect="AspectFill" Source="sneakers2.png" />
-                </Border>
 
-                <Border
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    StrokeThickness="0">
+                    <Label
+                        Style="{StaticResource NameStyle}"
+                        Text="Blue"
+                        TextColor="{StaticResource White}" />
+
+                    <Image Source="white_heart.png" Style="{StaticResource HeartStyle}" />
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="0">
+
                     <Image Aspect="AspectFill" Source="sneakers3.png" />
-                </Border>
 
-                <Border
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Padding="0"
-                    StrokeThickness="0">
+                    <Label
+                        Style="{StaticResource NameStyle}"
+                        Text="Red"
+                        TextColor="{StaticResource White}" />
+
+                    <Image Source="white_heart.png" Style="{StaticResource HeartStyle}" />
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="1">
+
                     <Image Aspect="AspectFill" Source="sneakers4.png" />
-                </Border>
+
+                    <Label
+                        Style="{StaticResource NameStyle}"
+                        Text="Yellow"
+                        TextColor="{StaticResource White}" />
+
+                    <Image Source="white_heart.png" Style="{StaticResource HeartStyle}" />
+                </Grid>
 
             </Grid>
 
