@@ -17,6 +17,7 @@
 
             <Style x:Key="BackgroundStyle" TargetType="Image">
                 <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="Aspect" Value="AspectFill"/>
             </Style>
 
             <Style x:Key="TopSectionStyle" TargetType="Grid">
@@ -51,6 +52,11 @@
     </ContentPage.Resources>
 
     <Grid BackgroundColor="Black">
+
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding GoToDetailCommand}" />
+        </Grid.GestureRecognizers>
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -119,11 +125,6 @@
 
                     <Image Source="white_heart.png" Style="{StaticResource HeartStyle}" />
                 </Grid>
-                    
-                <Grid.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding GoToDetailCommand}" />
-                </Grid.GestureRecognizers>
 
             </Grid>
 

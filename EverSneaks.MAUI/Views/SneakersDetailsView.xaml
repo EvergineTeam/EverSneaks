@@ -93,7 +93,8 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
                 <Setter Property="HorizontalOptions" Value="End" />
                 <Setter Property="WidthRequest" Value="160" />
-                <Setter Property="StrokeShape" Value="RoundRectangle 30" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 20" />
+                <Setter Property="Margin" Value="6,0" />
             </Style>
 
             <Style x:Key="AddCartTextStyle" TargetType="Label">
@@ -101,7 +102,22 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="{StaticResource White}" />
                 <Setter Property="FontFamily" Value="LatoRegular" />
-                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="HeartStyle" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="WidthRequest" Value="35" />
+                <Setter Property="Margin" Value="25" />
+            </Style>
+
+            <Style x:Key="NameStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource Black}" />
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontFamily" Value="RobotoBold" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="Center" />
             </Style>
 
         </ResourceDictionary>
@@ -117,6 +133,11 @@
             </Grid.RowDefinitions>
 
             <evergine:EvergineView x:Name="evergineView" Grid.Row="0" />
+
+            <Image
+                Grid.Row="0"
+                Source="black_heart.png"
+                Style="{StaticResource HeartStyle}" />
 
             <Grid Grid.Row="1" Style="{StaticResource PanelStyle}">
                 <Grid.RowDefinitions>
@@ -134,64 +155,54 @@
                     Text="Color:" />
 
                 <StackLayout Grid.Row="1" Style="{StaticResource ColorPanelStyle}">
-                    
+
                     <Grid>
-                        <Border 
-                            Style="{StaticResource ColorStyle}"
-                            BackgroundColor="#181818" />
-                        <Image x:Name="selectedGrayImage"
-                            Style="{StaticResource SelectedColorImageStyle}"
-                            IsVisible="True" />
+                        <Border BackgroundColor="#181818" Style="{StaticResource ColorStyle}" />
+                        <Image
+                            x:Name="selectedGrayImage"
+                            IsVisible="True"
+                            Style="{StaticResource SelectedColorImageStyle}" />
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer 
+                            <TapGestureRecognizer
                                 Command="{Binding ColorCommand}"
                                 CommandParameter="gray"
                                 Tapped="OnColorTapped" />
                         </Grid.GestureRecognizers>
                     </Grid>
-                    
+
                     <Grid>
-                        <Border 
-                            Style="{StaticResource ColorStyle}"
-                            BackgroundColor="#4585A9" />
-                        <Image x:Name="selectedBlueImage"
-                            Style="{StaticResource SelectedColorImageStyle}" />
+                        <Border BackgroundColor="#4585A9" Style="{StaticResource ColorStyle}" />
+                        <Image x:Name="selectedBlueImage" Style="{StaticResource SelectedColorImageStyle}" />
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer 
+                            <TapGestureRecognizer
                                 Command="{Binding ColorCommand}"
                                 CommandParameter="blue"
                                 Tapped="OnColorTapped" />
                         </Grid.GestureRecognizers>
                     </Grid>
-                    
+
                     <Grid>
-                        <Border 
-                            Style="{StaticResource ColorStyle}"
-                            BackgroundColor="#EE4451" />
-                        <Image x:Name="selectedRedImage"
-                            Style="{StaticResource SelectedColorImageStyle}" />
+                        <Border BackgroundColor="#EE4451" Style="{StaticResource ColorStyle}" />
+                        <Image x:Name="selectedRedImage" Style="{StaticResource SelectedColorImageStyle}" />
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer 
+                            <TapGestureRecognizer
                                 Command="{Binding ColorCommand}"
                                 CommandParameter="red"
                                 Tapped="OnColorTapped" />
                         </Grid.GestureRecognizers>
                     </Grid>
-                    
+
                     <Grid>
-                        <Border 
-                            Style="{StaticResource ColorStyle}"
-                            BackgroundColor="#F29108" />
-                        <Image x:Name="selectedOrangeImage"
-                            Style="{StaticResource SelectedColorImageStyle}" />
+                        <Border BackgroundColor="#F29108" Style="{StaticResource ColorStyle}" />
+                        <Image x:Name="selectedOrangeImage" Style="{StaticResource SelectedColorImageStyle}" />
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer 
+                            <TapGestureRecognizer
                                 Command="{Binding ColorCommand}"
                                 CommandParameter="orange"
                                 Tapped="OnColorTapped" />
                         </Grid.GestureRecognizers>
                     </Grid>
-                    
+
                 </StackLayout>
 
                 <Label
@@ -230,6 +241,7 @@
         </Grid>
 
         <Grid Style="{StaticResource TopSectionStyle}">
+            <Label Style="{StaticResource NameStyle}" Text="Air Jordan" />
             <Image Source="user_picture.png" Style="{StaticResource UserStyle}" />
         </Grid>
     </Grid>

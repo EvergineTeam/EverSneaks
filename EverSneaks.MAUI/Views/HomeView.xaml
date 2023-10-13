@@ -4,8 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:EverSneaks.MAUI.Controls"
-    Shell.NavBarIsVisible="False"
-    Title="HomeView">
+    Title="HomeView"
+    Shell.NavBarIsVisible="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -38,13 +38,11 @@
     </ContentPage.Resources>
 
     <Grid BackgroundColor="Black">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding GoToGalleryCommand}" />
+        </Grid.GestureRecognizers>
 
-        <Image Source="home_background.png" Style="{StaticResource BackgroundStyle}">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer
-                    Command="{Binding GoToGalleryCommand}" />
-            </Image.GestureRecognizers>
-        </Image>
+        <Image Source="home_background.png" Style="{StaticResource BackgroundStyle}" />
 
         <Grid Style="{StaticResource TopSectionStyle}">
             <Image Source="eversneaks_logo.png" Style="{StaticResource HomeLogoStyle}" />

@@ -1,5 +1,4 @@
-﻿using Evergine.Common.Graphics;
-using Evergine.Components.Graphics3D;
+﻿using Evergine.Components.Graphics3D;
 using Evergine.Framework;
 using Evergine.Framework.Graphics;
 using Evergine.Framework.Services;
@@ -11,7 +10,6 @@ namespace EverSneaks.Services
     public class ControllerService : Service
     {
         private MaterialComponent materialComponent;
-        private Camera3D camera;
         private CameraBehavior cameraBehavior;
         private Material grayMaterial;
         private Material redMaterial;
@@ -57,7 +55,6 @@ namespace EverSneaks.Services
                 var entity = scene.Managers.EntityManager.FindAllByTag("SneakersMesh").First();
                 this.materialComponent = entity.FindComponent<MaterialComponent>();
                 this.cameraBehavior = scene.Managers.EntityManager.FindComponentsOfType<CameraBehavior>().First();
-                ////this.cameraBehavior.AnimationEvent += this.UpdateSneakerColor();
             };
         }
 
