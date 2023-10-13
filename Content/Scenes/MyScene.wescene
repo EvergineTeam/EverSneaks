@@ -234,7 +234,7 @@ Items:
     Id: 6a094fea-e84d-4cbc-bb6e-60ccc60b5693
   - !Evergine.Framework.Assets.AssetSources.Entities.EntityItemModel,Evergine.Framework
     Name: Floor
-    Tag: null
+    Tag: Floor
     IsEnabled: true
     IsStatic: false
     Components:
