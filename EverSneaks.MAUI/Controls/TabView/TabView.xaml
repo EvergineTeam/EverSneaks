@@ -9,9 +9,8 @@
 
             <Color x:Key="TabViewBackgroundColor">#151515</Color>
 
-            <Style x:Key="TabViewBorderStyle" TargetType="Border">
+            <Style x:Key="TabViewBorderStyle" TargetType="Grid">
                 <Setter Property="Background" Value="{StaticResource TabViewBackgroundColor}" />
-                <Setter Property="StrokeThickness" Value="0"/>
             </Style>
 
             <Style x:Key="TabItemIconStyle" TargetType="Image">
@@ -22,7 +21,7 @@
         </ResourceDictionary>
     </ContentView.Resources>
 
-    <Border Style="{StaticResource TabViewBorderStyle}">
+    <Grid Style="{StaticResource TabViewBorderStyle}">
         <Grid ColumnDefinitions="*, *, *, *">
             <Image Source="home.png" Style="{StaticResource TabItemIconStyle}" />
             <Image
@@ -38,6 +37,6 @@
                 Source="user.png"
                 Style="{StaticResource TabItemIconStyle}" />
         </Grid>
-    </Border>
+    </Grid>
 
 </ContentView>
