@@ -9,7 +9,7 @@
 
     <ShellContent
         Title="EverSneaks"
-        ContentTemplate="{DataTemplate views:GalleryView}"
+        ContentTemplate="{DataTemplate views:HomeView}"
         Route="MainPage" />
 
 </Shell>

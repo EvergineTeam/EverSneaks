@@ -39,7 +39,12 @@
 
     <Grid BackgroundColor="Black">
 
-        <Image Source="home_background.png" Style="{StaticResource BackgroundStyle}" />
+        <Image Source="home_background.png" Style="{StaticResource BackgroundStyle}">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding GoToGalleryCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
 
         <Grid Style="{StaticResource TopSectionStyle}">
             <Image Source="eversneaks_logo.png" Style="{StaticResource HomeLogoStyle}" />

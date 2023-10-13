@@ -12,6 +12,7 @@ namespace EverSneaks.MAUI
 
         private void InitializeRoutes()
         {
+            Routing.RegisterRoute("gallery", typeof(GalleryView));
             Routing.RegisterRoute("detail", typeof(SneakersDetailsView));
         }
     }
