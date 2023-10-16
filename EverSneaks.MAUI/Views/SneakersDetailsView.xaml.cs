@@ -4,11 +4,17 @@ namespace EverSneaks.MAUI.Views;
 
 public partial class SneakersDetailsView : ContentPage
 {
-    private readonly MyApplication evergineApplication;
+    private MyApplication evergineApplication;
 
     public SneakersDetailsView()
 	{
-		InitializeComponent();
+		InitializeComponent();        
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
         this.evergineApplication = new MyApplication();
         this.evergineView.Application = this.evergineApplication;
         this.BindingContext = new SneakersDetailsViewModel(this.evergineView);

@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using EverSneaks.MAUI.Views;
+using System.Windows.Input;
 
 namespace EverSneaks.MAUI.ViewModels
 {
@@ -8,7 +9,9 @@ namespace EverSneaks.MAUI.ViewModels
 
         public HomeViewModel()
         {
-            this.GoToGalleryCommand = new Command(async () => await Shell.Current.GoToAsync("gallery"));
+            this.GoToGalleryCommand = new Command(
+                                        execute: async () => await Shell.Current.GoToAsync("gallery"),
+                                        canExecute: () => Shell.Current.CurrentPage is HomeView);
         }
     }
 }
