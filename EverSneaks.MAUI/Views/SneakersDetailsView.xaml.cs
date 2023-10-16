@@ -29,4 +29,11 @@ public partial class SneakersDetailsView : ContentPage
         this.selectedRedImage.IsVisible = false;
         this.selectedOrangeImage.IsVisible = false;
     }
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+
+        this.evergineView.Handler.DisconnectHandler();
+    }
 }

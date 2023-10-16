@@ -17,6 +17,7 @@ namespace EverSneaks.MAUI.Evergine
         private SwapChainPanel swapChainPanel;
 
         private bool isEvergineInitialized;
+        private WinUIWindowsSystem windowsSystem;
 
         public EvergineViewHandler(IPropertyMapper mapper, CommandMapper commandMapper = null)
             : base(mapper, commandMapper)
@@ -71,6 +72,7 @@ namespace EverSneaks.MAUI.Evergine
             this.swapChainPanel.PointerReleased -= this.OnPlatformViewPointerReleased;
 
             this.swapChainPanel = null;
+            this.windowsSystem.Dispose();
         }
 
         private void OnPlatformViewLoaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
@@ -106,14 +108,14 @@ namespace EverSneaks.MAUI.Evergine
             graphicsContext.CreateDevice();
 
             // Create Services
-            var windowsSystem = new WinUIWindowsSystem();
-            view.Application.Container.RegisterInstance(windowsSystem);
+            this.windowsSystem = new WinUIWindowsSystem();
+            view.Application.Container.RegisterInstance(this.windowsSystem);
 
-            var surface = (WinUISurface)windowsSystem.CreateSurface(swapChainPanel);
+            var surface = (WinUISurface)this.windowsSystem.CreateSurface(swapChainPanel);
             this.ConfigureGraphicsContext(view.Application, surface, displayName);
 
             var clockTimer = Stopwatch.StartNew();
-            windowsSystem.Run(
+            this.windowsSystem.Run(
                 view.Application.Initialize,
                 () =>
                 {
