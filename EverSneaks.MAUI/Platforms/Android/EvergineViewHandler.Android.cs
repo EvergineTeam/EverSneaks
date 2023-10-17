@@ -1,9 +1,7 @@
-using EverSneaks.MAUI.Evergine;
 using Evergine.AndroidView;
 using Evergine.Common.Graphics;
 using Evergine.Framework.Services;
 using Evergine.Vulkan;
-using EverSneaks;
 using Microsoft.Maui.Handlers;
 
 namespace EverSneaks.MAUI.Evergine
