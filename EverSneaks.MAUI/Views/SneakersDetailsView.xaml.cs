@@ -8,16 +8,17 @@ public partial class SneakersDetailsView : ContentPage
 
     public SneakersDetailsView()
 	{
-		InitializeComponent();        
+		InitializeComponent();
+
+        this.evergineApplication = new MyApplication();
+        this.evergineView.Application = this.evergineApplication;
+        this.BindingContext = new SneakersDetailsViewModel(this.evergineView);
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
-
-        this.evergineApplication = new MyApplication();
-        this.evergineView.Application = this.evergineApplication;
-        this.BindingContext = new SneakersDetailsViewModel(this.evergineView);
+        
     }
 
     private void OnColorTapped(object sender, TappedEventArgs args)
@@ -39,7 +40,5 @@ public partial class SneakersDetailsView : ContentPage
     protected override void OnDisappearing()
     {
         base.OnDisappearing();
-
-        this.evergineView.Handler.DisconnectHandler();
     }
 }

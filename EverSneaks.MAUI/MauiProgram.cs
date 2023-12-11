@@ -1,4 +1,5 @@
 using EverSneaks.MAUI.Evergine;
+using EverSneaks.MAUI.Views;
 using Microsoft.Extensions.Logging;
 
 namespace EverSneaks.MAUI
@@ -23,6 +24,7 @@ namespace EverSneaks.MAUI
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddSingleton<SneakersDetailsView>();
 
             return builder.Build();
         }

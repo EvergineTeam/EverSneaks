@@ -10,6 +10,9 @@ namespace EverSneaks.MAUI.Evergine
     {
         private AndroidSurface androidSurface;
         private AndroidWindowsSystem windowsSystem;
+        private static bool isEvergineInitialized;
+        private static VKGraphicsContext graphicsContext;
+        private static SwapChain swapChain;
 
         public EvergineViewHandler(IPropertyMapper mapper, CommandMapper commandMapper = null)
            : base(mapper, commandMapper)
@@ -28,19 +31,35 @@ namespace EverSneaks.MAUI.Evergine
                 return;
             }
 
-            // Register Windows system
-            view.Application.Container.RegisterInstance(this.windowsSystem);
+            if (!isEvergineInitialized)
+            {
+                // Register Windows system
+                view.Application.Container.RegisterInstance(windowsSystem);
 
-            // Creates XAudio device
-            var xaudio = new global::Evergine.OpenAL.ALAudioDevice();
-            view.Application.Container.RegisterInstance(xaudio);
+                // Creates XAudio device
+                var xaudio = new global::Evergine.OpenAL.ALAudioDevice();
+                view.Application.Container.RegisterInstance(xaudio);
+            }
+            else
+            {
+                view.Application.Container.Unregister<AndroidWindowsSystem>();
+                view.Application.Container.RegisterInstance(windowsSystem);
+            }
 
             System.Diagnostics.Stopwatch clockTimer = System.Diagnostics.Stopwatch.StartNew();
-            this.windowsSystem.Run(
+            windowsSystem.Run(
             () =>
             {
-                this.ConfigureGraphicsContext(view.Application as EverSneaks.MyApplication, this.androidSurface);
-                view.Application.Initialize();
+                if (!isEvergineInitialized)
+                {
+                    this.ConfigureGraphicsContext(view.Application as EverSneaks.MyApplication, androidSurface);
+                    view.Application.Initialize();
+                    isEvergineInitialized = true;
+                }
+                else
+                {
+                    this.ConfigureGraphicsContext(view.Application as EverSneaks.MyApplication, androidSurface);
+                }
             },
             () =>
             {
@@ -54,36 +73,49 @@ namespace EverSneaks.MAUI.Evergine
 
         protected override AndroidSurfaceView CreatePlatformView()
         {
-            this.windowsSystem = new AndroidWindowsSystem(this.Context);
-            this.androidSurface = this.windowsSystem.CreateSurface(0, 0) as AndroidSurface;
-            return this.androidSurface.NativeSurface;
+            windowsSystem = new AndroidWindowsSystem(this.Context);
+            androidSurface = windowsSystem.CreateSurface(0, 0) as AndroidSurface;
+
+            return androidSurface.NativeSurface;
         }
 
         private void ConfigureGraphicsContext(MyApplication application, Surface surface)
         {
-            var graphicsContext = new VKGraphicsContext();
-            graphicsContext.CreateDevice();
-            SwapChainDescription swapChainDescription = new SwapChainDescription()
+            if (graphicsContext == null)
             {
-                SurfaceInfo = surface.SurfaceInfo,
-                Width = surface.Width,
-                Height = surface.Height,
-                ColorTargetFormat = PixelFormat.R8G8B8A8_UNorm,
-                ColorTargetFlags = TextureFlags.RenderTarget | TextureFlags.ShaderResource,
-                DepthStencilTargetFormat = PixelFormat.D24_UNorm_S8_UInt,
-                DepthStencilTargetFlags = TextureFlags.DepthStencil,
-                SampleCount = TextureSampleCount.None,
-                IsWindowed = true,
-                RefreshRate = 60,
-            };
-            var swapChain = graphicsContext.CreateSwapChain(swapChainDescription);
-            swapChain.VerticalSync = true;
+                graphicsContext = new VKGraphicsContext();
+                graphicsContext.CreateDevice();
+
+                SwapChainDescription swapChainDescription = new SwapChainDescription()
+                {
+                    SurfaceInfo = surface.SurfaceInfo,
+                    Width = surface.Width,
+                    Height = surface.Height,
+                    ColorTargetFormat = PixelFormat.R8G8B8A8_UNorm,
+                    ColorTargetFlags = TextureFlags.RenderTarget | TextureFlags.ShaderResource,
+                    DepthStencilTargetFormat = PixelFormat.D24_UNorm_S8_UInt,
+                    DepthStencilTargetFlags = TextureFlags.DepthStencil,
+                    SampleCount = TextureSampleCount.None,
+                    IsWindowed = true,
+                    RefreshRate = 60,
+                };
+                swapChain = graphicsContext.CreateSwapChain(swapChainDescription);
+                swapChain.VerticalSync = true;
+            }
 
             var graphicsPresenter = application.Container.Resolve<GraphicsPresenter>();
             var firstDisplay = new global::Evergine.Framework.Graphics.Display(surface, swapChain);
-            graphicsPresenter.AddDisplay("DefaultDisplay", firstDisplay);
 
-            application.Container.RegisterInstance(graphicsContext);
+            if (!isEvergineInitialized)
+            {
+                graphicsPresenter.AddDisplay("DefaultDisplay", firstDisplay);
+                application.Container.RegisterInstance(graphicsContext);
+            }
+            else
+            {                
+                graphicsPresenter.RemoveDisplay("DefaultDisplay");
+                graphicsPresenter.AddDisplay("DefaultDisplay", firstDisplay);
+            }
 
             surface.OnScreenSizeChanged += (_, args) =>
             {

@@ -70,9 +70,6 @@ namespace EverSneaks.MAUI.Evergine
             this.swapChainPanel.PointerPressed -= this.OnPlatformViewPointerPressed;
             this.swapChainPanel.PointerMoved -= this.OnPlatformViewPointerMoved;
             this.swapChainPanel.PointerReleased -= this.OnPlatformViewPointerReleased;
-
-            this.swapChainPanel = null;
-            this.windowsSystem.Dispose();
         }
 
         private void OnPlatformViewLoaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
