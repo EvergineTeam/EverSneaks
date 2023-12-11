@@ -22,6 +22,6 @@ Powered by **[Evergine](http://www.evergine.com)**
 
 LET'S CONNECT!
 
-- [Youtube](https://www.youtube.com/subscription_center?add_user=EvergineChannel)
+- [Youtube](https://www.youtube.com/channel/UCpA-X92rxM0OuywdVcir9mA)
 - [Twitter](https://twitter.com/EvergineTeam)
-- [Blog](http://geeks.ms/evergineteam/)
+- [News](https://evergine.com/news/)
