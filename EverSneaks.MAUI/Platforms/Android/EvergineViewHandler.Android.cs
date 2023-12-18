@@ -85,23 +85,23 @@ namespace EverSneaks.MAUI.Evergine
             {
                 graphicsContext = new VKGraphicsContext();
                 graphicsContext.CreateDevice();
-
-                SwapChainDescription swapChainDescription = new SwapChainDescription()
-                {
-                    SurfaceInfo = surface.SurfaceInfo,
-                    Width = surface.Width,
-                    Height = surface.Height,
-                    ColorTargetFormat = PixelFormat.R8G8B8A8_UNorm,
-                    ColorTargetFlags = TextureFlags.RenderTarget | TextureFlags.ShaderResource,
-                    DepthStencilTargetFormat = PixelFormat.D24_UNorm_S8_UInt,
-                    DepthStencilTargetFlags = TextureFlags.DepthStencil,
-                    SampleCount = TextureSampleCount.None,
-                    IsWindowed = true,
-                    RefreshRate = 60,
-                };
-                swapChain = graphicsContext.CreateSwapChain(swapChainDescription);
-                swapChain.VerticalSync = true;
             }
+
+            SwapChainDescription swapChainDescription = new SwapChainDescription()
+            {
+                SurfaceInfo = surface.SurfaceInfo,
+                Width = surface.Width,
+                Height = surface.Height,
+                ColorTargetFormat = PixelFormat.R8G8B8A8_UNorm,
+                ColorTargetFlags = TextureFlags.RenderTarget | TextureFlags.ShaderResource,
+                DepthStencilTargetFormat = PixelFormat.D24_UNorm_S8_UInt,
+                DepthStencilTargetFlags = TextureFlags.DepthStencil,
+                SampleCount = TextureSampleCount.None,
+                IsWindowed = true,
+                RefreshRate = 60,
+            };
+            swapChain = graphicsContext.CreateSwapChain(swapChainDescription);
+            swapChain.VerticalSync = true;
 
             var graphicsPresenter = application.Container.Resolve<GraphicsPresenter>();
             var firstDisplay = new global::Evergine.Framework.Graphics.Display(surface, swapChain);
@@ -112,7 +112,7 @@ namespace EverSneaks.MAUI.Evergine
                 application.Container.RegisterInstance(graphicsContext);
             }
             else
-            {                
+            {
                 graphicsPresenter.RemoveDisplay("DefaultDisplay");
                 graphicsPresenter.AddDisplay("DefaultDisplay", firstDisplay);
             }
