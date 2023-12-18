@@ -114,7 +114,7 @@ namespace EverSneaks.MAUI.Evergine
             else
             {
                 graphicsPresenter.RemoveDisplay("DefaultDisplay");
-                graphicsPresenter.AddDisplay("DefaultDisplay", firstDisplay);
+                graphicsPresenter.AddDisplay("DefaultDisplay", firstDisplay);                                      
             }
 
             surface.OnScreenSizeChanged += (_, args) =>

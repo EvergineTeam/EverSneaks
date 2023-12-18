@@ -66,6 +66,12 @@ namespace EverSneaks.Components
         /// </summary>
         private Vector3 cameraInitialPosition;
 
+        [BindComponent(source: BindComponentSource.ChildrenSkipOwner)]
+        private Camera3D camera3D;
+
+        [BindService]
+        private GraphicsPresenter graphicsPresenter;
+
         private MouseDispatcher mouseDispatcher;
         private Evergine.Mathematics.Point currentMouseState;
         private Vector2 lastMousePosition;
@@ -76,12 +82,7 @@ namespace EverSneaks.Components
         private IWorkAction animation;
         private bool animating;
         private float initialRotationY;
-
-        //private readonly Color violetColor = new Color("#6F64EDFF");
-        //private readonly Color blueColor = new Color("#2EB6FDFF");
-        //private readonly Color pinkColor = new Color("#F92EFDFF");
-        //private readonly Color orangeColor = new Color("#FD9D2EFF");
-
+        private Display display;
         private readonly Color color1 = new Color("#e6e5e5");
         private readonly Color color2 = new Color("#b1252e");
         private readonly Color color3 = new Color("#e38210");
@@ -120,17 +121,29 @@ namespace EverSneaks.Components
         {
             base.OnActivated();
 
-            var display = this.Owner.Scene.Managers.RenderManager.ActiveCamera3D?.Display;
-            if (display != null)
+            this.RefreshDisplay();
+        }
+
+        private void RefreshDisplay()
+        {
+            this.display = this.camera3D.Display;
+            if (this.display != null)
             {
-                this.mouseDispatcher = display.MouseDispatcher;
-                this.touchDispatcher = display.TouchDispatcher;
+                this.mouseDispatcher = this.display.MouseDispatcher;
+                this.touchDispatcher = this.display.TouchDispatcher;
             }
         }
 
         /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
+            this.graphicsPresenter.TryGetDisplay("DefaultDisplay", out var presenterDisplay);
+            if (presenterDisplay != this.display) 
+            {
+                this.camera3D.DisplayTagDirty = true;
+                this.RefreshDisplay();
+            };
+
             this.HandleInput();
 
             if (this.isDirty)
@@ -283,7 +296,7 @@ namespace EverSneaks.Components
         }
 
         public void PlaySpinAnimation(SneakerColor sneakerColor)
-        {
+        {           
             this.animating = true;
             this.animation?.Cancel();
 
@@ -301,16 +314,16 @@ namespace EverSneaks.Components
                         var camera = this.Managers.RenderManager.ActiveCamera3D;
                         switch (sneakerColor)
                         {
-                            case SneakerColor.Gray:                                
+                            case SneakerColor.Gray:
                                 camera.BackgroundColor = color1;
                                 break;
-                            case SneakerColor.Red:                                
+                            case SneakerColor.Red:
                                 camera.BackgroundColor = color2;
                                 break;
-                            case SneakerColor.Orange:                                
+                            case SneakerColor.Orange:
                                 camera.BackgroundColor = color3;
                                 break;
-                            case SneakerColor.Blue:                                
+                            case SneakerColor.Blue:
                                 camera.BackgroundColor = color4;
                                 break;
                         }
