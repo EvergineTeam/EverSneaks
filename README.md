@@ -15,7 +15,7 @@ All images, names, and icons for this showcase were meticulously curated by the 
 
 ## Build and Test
 
-* Required Visual Studio 2022 with .NET7 support
+* Required Visual Studio 2022 with .NET8 support
 
 ---
 Powered by **[Evergine](http://www.evergine.com)**
