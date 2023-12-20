@@ -69,14 +69,9 @@ namespace EverSneaks.Components
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner)]
         private Camera3D camera3D;
 
-        [BindService]
-        private GraphicsPresenter graphicsPresenter;
-
-        private MouseDispatcher mouseDispatcher;
         private Evergine.Mathematics.Point currentMouseState;
         private Vector2 lastMousePosition;
 
-        private PointerDispatcher touchDispatcher;
         private Evergine.Mathematics.Point currentTouchState;
         private Vector2 lastTouchPosition;
         private IWorkAction animation;
@@ -117,33 +112,8 @@ namespace EverSneaks.Components
         }
 
         /// <inheritdoc/>
-        protected override void OnActivated()
-        {
-            base.OnActivated();
-
-            this.RefreshDisplay();
-        }
-
-        private void RefreshDisplay()
-        {
-            this.display = this.camera3D.Display;
-            if (this.display != null)
-            {
-                this.mouseDispatcher = this.display.MouseDispatcher;
-                this.touchDispatcher = this.display.TouchDispatcher;
-            }
-        }
-
-        /// <inheritdoc/>
         protected override void Update(TimeSpan gameTime)
         {
-            this.graphicsPresenter.TryGetDisplay("DefaultDisplay", out var presenterDisplay);
-            if (presenterDisplay != this.display) 
-            {
-                this.camera3D.DisplayTagDirty = true;
-                this.RefreshDisplay();
-            };
-
             this.HandleInput();
 
             if (this.isDirty)
@@ -178,15 +148,16 @@ namespace EverSneaks.Components
         /// </summary>
         private void HandleMouse()
         {
-            if (this.mouseDispatcher == null)
+            var mouseDispatcher = this.camera3D?.Display?.MouseDispatcher;
+            if (mouseDispatcher == null)
             {
                 return;
             }
 
             // Orbit            
-            if (this.mouseDispatcher.IsButtonDown(MouseButtons.Left))
+            if (mouseDispatcher.IsButtonDown(MouseButtons.Left))
             {
-                this.currentMouseState = this.mouseDispatcher.Position;
+                this.currentMouseState = mouseDispatcher.Position;
 
                 if (this.isRotating == false)
                 {
@@ -217,12 +188,13 @@ namespace EverSneaks.Components
         /// </summary>
         private void HandleTouch()
         {
-            if (this.touchDispatcher == null)
+            var touchDispatcher = this.camera3D?.Display?.TouchDispatcher;
+            if (touchDispatcher == null)
             {
                 return;
             }
 
-            var point = this.touchDispatcher.Points.FirstOrDefault();
+            var point = touchDispatcher.Points.FirstOrDefault();
 
             if (point == null)
             {
