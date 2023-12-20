@@ -113,10 +113,7 @@ namespace EverSneaks.MAUI.Evergine
             }
             else
             {
-                graphicsPresenter.TryGetDisplay("DefaultDisplay", out var oldDisplay);
-                graphicsPresenter.RemoveDisplay("DefaultDisplay");
-                oldDisplay?.Dispose();
-
+                graphicsPresenter.RemoveDisplay("DefaultDisplay")?.Dispose();
                 graphicsPresenter.AddDisplay("DefaultDisplay", firstDisplay);
             }
 
