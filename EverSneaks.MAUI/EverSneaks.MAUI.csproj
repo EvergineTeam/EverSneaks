@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EverSneaks\EverSneaks.csproj" />
@@ -64,14 +66,13 @@
         <EvergineProfileName>#MAUI#Android</EvergineProfileName>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Evergine.AndroidView" Version="2023.9.28.1837" />
-        <PackageReference Include="Evergine.Bindings.Vulkan" Version="2023.7.9.27" />
-        <PackageReference Include="Evergine.HLSLEverywhere" Version="2023.9.28.1837" />
+        <PackageReference Include="Evergine.AndroidView" Version="2024.6.28.10" />
+        <PackageReference Include="Evergine.HLSLEverywhere" Version="2024.6.28.10" />
         <PackageReference Include="Evergine.LibBulletc.Natives" Version="2023.11.28.20" />
-        <PackageReference Include="Evergine.OpenAL" Version="2023.9.28.1837" />
-        <PackageReference Include="Evergine.Targets" Version="2023.9.28.1837" />
-        <PackageReference Include="Evergine.Targets.Maui" Version="2023.9.28.1837" />
-        <PackageReference Include="Evergine.Vulkan" Version="2023.9.28.1837" />
+        <PackageReference Include="Evergine.OpenAL" Version="2024.6.28.10" />
+        <PackageReference Include="Evergine.Targets" Version="2024.6.28.10" />
+        <PackageReference Include="Evergine.Targets.Maui" Version="2024.6.28.10" />
+        <PackageReference Include="Evergine.Vulkan" Version="2024.6.28.10" />
       </ItemGroup>
       <ItemGroup>
         <TrimmerRootDescriptor Include="Platforms\Android\linker.xml" />
@@ -88,12 +89,12 @@
         <MtouchInterpreter>-all</MtouchInterpreter>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Evergine.iOSView" Version="2023.9.28.1837" />
-        <PackageReference Include="Evergine.HLSLEverywhere" Version="2023.9.28.1837" />
+        <PackageReference Include="Evergine.iOSView" Version="2024.6.28.10" />
+        <PackageReference Include="Evergine.HLSLEverywhere" Version="2024.6.28.10" />
         <PackageReference Include="Evergine.LibBulletc.Natives" Version="2023.11.28.20" />
-        <PackageReference Include="Evergine.Metal" Version="2023.9.28.1837" />
-        <PackageReference Include="Evergine.Targets" Version="2023.9.28.1837" />
-        <PackageReference Include="Evergine.Targets.iOS" Version="2023.9.28.1837" />
+        <PackageReference Include="Evergine.Metal" Version="2024.6.28.10" />
+        <PackageReference Include="Evergine.Targets" Version="2024.6.28.10" />
+        <PackageReference Include="Evergine.Targets.iOS" Version="2024.6.28.10" />
       </ItemGroup>
     </When>
     <When Condition="'$(TargetFramework)' == 'net8.0-windows10.0.19041.0'">
@@ -101,13 +102,13 @@
         <EvergineProfileName>#MAUI#Windows</EvergineProfileName>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Evergine.CodeScenes" Version="2023.9.28.1837" />
-        <PackageReference Include="Evergine.DirectX11" Version="2023.9.28.1837" />
-        <PackageReference Include="Evergine.HLSLEverywhere" Version="2023.9.28.1837" />
-        <PackageReference Include="Evergine.XAudio2" Version="2023.9.28.1837" />
-        <PackageReference Include="Evergine.Targets" Version="2023.9.28.1837" />
-        <PackageReference Include="Evergine.Targets.Maui" Version="2023.9.28.1837" />
-        <PackageReference Include="Evergine.WinUI" Version="2023.9.28.1837" />
+        <PackageReference Include="Evergine.CodeScenes" Version="2024.6.28.10" />
+        <PackageReference Include="Evergine.DirectX11" Version="2024.6.28.10" />
+        <PackageReference Include="Evergine.HLSLEverywhere" Version="2024.6.28.10" />
+        <PackageReference Include="Evergine.XAudio2" Version="2024.6.28.10" />
+        <PackageReference Include="Evergine.Targets" Version="2024.6.28.10" />
+        <PackageReference Include="Evergine.Targets.Maui" Version="2024.6.28.10" />
+        <PackageReference Include="Evergine.WinUI" Version="2024.6.28.10" />
       </ItemGroup>
     </When>
   </Choose>

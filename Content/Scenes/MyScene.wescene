@@ -421,10 +421,4 @@ Managers:
     PunctualResolution: Size_512
     ShadowFilter: PCF3x3
     SpotResolution: Size_512
-  - !Evergine.Framework.Managers.VirtualScreenManager,Evergine.Framework
-    Id: b4f40b87-f84b-4aa5-a73d-f1886ee09e1c
-    Expand: true
-    IsEnabled: false
-    Stretch: Uniform
-    VirtualHeight: 0.0
-    VirtualWidth: 0.0
+

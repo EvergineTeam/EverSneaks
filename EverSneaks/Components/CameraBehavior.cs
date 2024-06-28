@@ -1,5 +1,6 @@
 ﻿// Copyright © Plain Concepts S.L.U. All rights reserved. Use is subject to license terms.
 
+using Evergine.Common;
 using Evergine.Common.Graphics;
 using Evergine.Common.Input;
 using Evergine.Common.Input.Mouse;
@@ -67,10 +68,10 @@ namespace EverSneaks.Components
         private Vector3 cameraInitialPosition;
 
         [BindComponent(source: BindComponentSource.ChildrenSkipOwner)]
-        private Camera3D camera3D;
+        private Camera3D camera3D = null;
 
         [BindService]
-        private GraphicsPresenter graphicsPresenter;
+        private GraphicsPresenter graphicsPresenter = null;
 
         private MouseDispatcher mouseDispatcher;
         private Evergine.Mathematics.Point currentMouseState;
@@ -163,7 +164,7 @@ namespace EverSneaks.Components
                 return;
             }
 
-            if (Evergine.Platform.DeviceInfo.PlatformType == Evergine.Common.PlatformType.Windows)
+            if (OperatingSystemHelper.IsOSPlatform(PlatformType.Windows))
             {
                 this.HandleMouse();
             }
