@@ -1,5 +1,6 @@
 using Evergine.AndroidView;
 using Evergine.Common.Graphics;
+using Evergine.Common.Helpers;
 using Evergine.Framework.Services;
 using Evergine.Vulkan;
 using Microsoft.Maui.Handlers;
@@ -13,6 +14,7 @@ namespace EverSneaks.MAUI.Evergine
         private static bool isEvergineInitialized;
         private static VKGraphicsContext graphicsContext;
         private static SwapChain swapChain;
+        private static bool surfaceInvalidated;
 
         public EvergineViewHandler(IPropertyMapper mapper, CommandMapper commandMapper = null)
            : base(mapper, commandMapper)
@@ -73,10 +75,47 @@ namespace EverSneaks.MAUI.Evergine
 
         protected override AndroidSurfaceView CreatePlatformView()
         {
-            windowsSystem = new AndroidWindowsSystem(this.Context);
-            androidSurface = windowsSystem.CreateSurface(0, 0) as AndroidSurface;
+            this.windowsSystem = new AndroidWindowsSystem(this.Context);
+            this.androidSurface = this.windowsSystem.CreateSurface(0, 0) as AndroidSurface;            
 
-            return androidSurface.NativeSurface;
+            return this.androidSurface.NativeSurface;
+        }
+
+        protected override void ConnectHandler(AndroidSurfaceView platformView)
+        {
+            base.ConnectHandler(platformView);
+            this.androidSurface.OnSurfaceInfoChanged += this.AndroidSurface_OnSurfaceInfoChanged;
+            this.androidSurface.Closing += this.AndroidSurface_OnClosing;
+
+            this.androidSurface.OnScreenSizeChanged += this.AndroidSurface_OnScreenSizeChanged; 
+        }
+
+        protected override void DisconnectHandler(AndroidSurfaceView platformView)
+        {
+            base.DisconnectHandler(platformView);
+            this.androidSurface.OnSurfaceInfoChanged -= this.AndroidSurface_OnSurfaceInfoChanged;
+            this.androidSurface.Closing -= this.AndroidSurface_OnClosing;
+            this.androidSurface.OnScreenSizeChanged -= this.AndroidSurface_OnScreenSizeChanged;
+        }
+
+        private void AndroidSurface_OnSurfaceInfoChanged(object sender, SurfaceInfo surfaceInfo)
+        {
+            swapChain?.RefreshSurfaceInfo(surfaceInfo);
+            swapChain?.ResizeSwapChain(this.androidSurface.Width, this.androidSurface.Height);
+            surfaceInvalidated = false;
+        }
+
+        private void AndroidSurface_OnClosing(object sender, EventArgs e)
+        {
+            surfaceInvalidated = true;
+        }
+
+        private void AndroidSurface_OnScreenSizeChanged(object sender, SizeEventArgs e)
+        {
+            if (!surfaceInvalidated)
+            {
+                swapChain?.ResizeSwapChain(this.androidSurface.Width, this.androidSurface.Height); 
+            }
         }
 
         private void ConfigureGraphicsContext(MyApplication application, Surface surface)
@@ -114,13 +153,8 @@ namespace EverSneaks.MAUI.Evergine
             else
             {
                 graphicsPresenter.RemoveDisplay("DefaultDisplay");
-                graphicsPresenter.AddDisplay("DefaultDisplay", firstDisplay);                                      
+                graphicsPresenter.AddDisplay("DefaultDisplay", firstDisplay);
             }
-
-            surface.OnScreenSizeChanged += (_, args) =>
-            {
-                swapChain.ResizeSwapChain(args.Height, args.Width);
-            };
         }
     }
 }
