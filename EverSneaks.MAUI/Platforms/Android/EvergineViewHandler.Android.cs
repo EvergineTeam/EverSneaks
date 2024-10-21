@@ -1,4 +1,4 @@
-using Evergine.AndroidView;
+using Evergine.Android;
 using Evergine.Common.Graphics;
 using Evergine.Common.Helpers;
 using Evergine.Framework.Services;
