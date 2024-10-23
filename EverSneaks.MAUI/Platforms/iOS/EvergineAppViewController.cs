@@ -1,4 +1,4 @@
-using Evergine.IOSView;
+using Evergine.iOS;
 using UIKit;
 
 namespace EverSneaks.MAUI.Platforms.iOS

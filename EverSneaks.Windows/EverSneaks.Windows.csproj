@@ -5,12 +5,12 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Evergine.DirectX11" Version="2024.6.28.10" />
-    <PackageReference Include="Evergine.HLSLEverywhere" Version="2024.6.28.10" />
-    <PackageReference Include="Evergine.XAudio2" Version="2024.6.28.10" />
-    <PackageReference Include="Evergine.Forms" Version="2024.6.28.10" />
-    <PackageReference Include="Evergine.Targets" Version="2024.6.28.10" />
-    <PackageReference Include="Evergine.Targets.Windows" Version="2024.6.28.10" />
+    <PackageReference Include="Evergine.DirectX11" Version="2024.10.24.7" />
+    <PackageReference Include="Evergine.HLSLEverywhere" Version="2024.10.24.7" />
+    <PackageReference Include="Evergine.XAudio2" Version="2024.10.24.7" />
+    <PackageReference Include="Evergine.Forms" Version="2024.10.24.7" />
+    <PackageReference Include="Evergine.Targets" Version="2024.10.24.7" />
+    <PackageReference Include="Evergine.Targets.Windows" Version="2024.10.24.7" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EverSneaks\EverSneaks.csproj" />
