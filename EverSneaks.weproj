@@ -2,7 +2,7 @@
 Packages:
   - Id: Evergine.Core
     LocalPath: null
-    Version: 2024.10.21.485-nightly
+    Version: 2024.10.24.7
 Profiles:
   - AdditionalEffectTechniqueCombinations: SHADOW_SUPPORTED-SHADOWFILTER3,SHADOW_SUPPORTED-SHADOWFILTER3-POINT_LIGHT,SHADOW_SUPPORTED-SHADOWFILTER3-SPOT_LIGHT,SHADOW_SUPPORTED-SHADOWFILTER3-POINT_LIGHT-SPOT_LIGHT
     AlphaCompressionFormat: BC3_UNorm
