@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<linker>
+  <assembly fullname="EverSneaks" />
+  <assembly fullname="EverSneaks.MAUI" />
+
+  <assembly fullname="Evergine.Common">
+    <type fullname="Evergine.Common.IO.AssetsDirectory" />
+  </assembly>
+  <assembly fullname="Evergine.Framework">
+    <!-- Scene -->
+    <type fullname="Evergine.Framework.Assets.SceneSourceConverter" />
+    <!-- Material -->
+    <type fullname="Evergine.Framework.Assets.MaterialSourceLoader" />
+    <type fullname="Evergine.Framework.Assets.Importers.EvergineMaterialImporter" />
+    <!-- Effect -->
+    <type fullname="Evergine.Framework.Assets.EffectSourceLoader" />
+    <type fullname="Evergine.Framework.Assets.Importers.EvergineEffectImporter" />
+    <!-- Model -->
+    <type fullname="Evergine.Framework.Assets.ModelSourceLoader" />
+    <type fullname="Evergine.Framework.Assets.Importers.EvergineModelImporter" />
+    <!-- RenderLayer -->
+    <type fullname="Evergine.Framework.Assets.RenderLayerSourceLoader" />
+    <type fullname="Evergine.Framework.Assets.Importers.EvergineRenderLayerImporter" />
+    <!-- Sampler -->
+    <type fullname="Evergine.Framework.Assets.SamplerSourceLoader" />
+    <type fullname="Evergine.Framework.Assets.Importers.EvergineSamplerImporter" />
+    <!-- Texture -->
+    <type fullname="Evergine.Framework.Assets.TextureSourceLoader" />
+    <type fullname="Evergine.Framework.Assets.Importers.EvergineTextureImporter" />
+    <!-- ReflectionProbe -->
+    <type fullname="Evergine.Framework.Assets.ReflectionProbeSourceLoader" />
+    <type fullname="Evergine.Framework.Assets.Importers.EvergineReflectionProbeImporter" />
+
+    <type fullname="Evergine.Framework.Drawable">
+      <property signature="Evergine.Framework.Managers.BaseRenderManager RenderManager" accessors="set" />
+    </type>
+
+    <type fullname="Evergine.Framework.BindComponent" />
+    <type fullname="Evergine.Framework.BindEntity" />
+    <type fullname="Evergine.Framework.BindSceneManager" />
+    <type fullname="Evergine.Framework.BindService" />
+
+    <type fullname="Evergine.Framework.Services.Clock" required="false" />
+    <type fullname="Evergine.Framework.Services.TimerFactory" required="false" />
+    <type fullname="Evergine.Framework.Services.Random" required="false" />
+    <type fullname="Evergine.Framework.Services.ErrorHandler" required="false" />
+    <type fullname="Evergine.Framework.Services.ScreenContextManager" required="false" />
+    <type fullname="Evergine.Framework.Services.GraphicsPresenter" required="false" />
+    <type fullname="Evergine.Framework.Services.AssetsService" required="false" />
+    <type fullname="Evergine.Framework.Services.ForegroundTaskSchedulerService" required="false" />
+    <type fullname="Evergine.Framework.Services.WorkActionScheduler" required="false" />
+  </assembly>
+</linker>
