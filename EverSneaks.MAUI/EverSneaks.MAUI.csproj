@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+    <TargetFrameworks>net9.0-android;net9.0-ios</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
     <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
     <!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
     <OutputType>Exe</OutputType>
@@ -58,25 +58,22 @@
     </MauiXaml>
   </ItemGroup>
   <Choose>
-    <When Condition="'$(TargetFramework)' == 'net8.0-android'">
+    <When Condition="'$(TargetFramework)' == 'net9.0-android'">
       <PropertyGroup>
         <EvergineProfileName>#MAUI#Android</EvergineProfileName>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Xamarin.AndroidX.Collection" Version="1.4.2" />
-        <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="1.4.2" />
-        <PackageReference Include="Evergine.Android" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.HLSLEverywhere" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.OpenAL" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.Targets" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.Targets.Maui" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.Vulkan" Version="2025.3.18.1041" />
+        <PackageReference Include="Evergine.Android" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.OpenAL" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.Targets" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.Targets.Maui" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.Vulkan" Version="2025.10.21.8" />
       </ItemGroup>
       <ItemGroup>
         <TrimmerRootDescriptor Include="Platforms\Android\linker.xml" />
       </ItemGroup>
     </When>
-    <When Condition="'$(TargetFramework)' == 'net8.0-ios'">
+    <When Condition="'$(TargetFramework)' == 'net9.0-ios'">
       <PropertyGroup>
         <EvergineProfileName>#MAUI#iOS</EvergineProfileName>
         <!--
@@ -87,25 +84,25 @@
         <MtouchInterpreter>-all</MtouchInterpreter>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Evergine.iOS" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.HLSLEverywhere" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.Metal" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.Targets" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.Targets.iOS" Version="2025.3.18.1041" />
+        <PackageReference Include="Evergine.iOS" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.HLSLEverywhere" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.Metal" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.Targets" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.Targets.iOS" Version="2025.10.21.8" />
       </ItemGroup>
     </When>
-    <When Condition="'$(TargetFramework)' == 'net8.0-windows10.0.19041.0'">
+    <When Condition="'$(TargetFramework)' == 'net9.0-windows10.0.19041.0'">
       <PropertyGroup>
         <EvergineProfileName>#MAUI#Windows</EvergineProfileName>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Evergine.CodeScenes" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.DirectX11" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.HLSLEverywhere" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.XAudio2" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.Targets" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.Targets.Maui" Version="2025.3.18.1041" />
-        <PackageReference Include="Evergine.WinUI" Version="2025.3.18.1041" />
+        <PackageReference Include="Evergine.CodeScenes" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.DirectX11" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.HLSLEverywhere" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.XAudio2" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.Targets" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.Targets.Maui" Version="2025.10.21.8" />
+        <PackageReference Include="Evergine.WinUI" Version="2025.10.21.8" />
       </ItemGroup>
     </When>
   </Choose>
