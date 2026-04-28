@@ -16,8 +16,10 @@ namespace EverSneaks.MAUI.Evergine
 
         private SwapChainPanel swapChainPanel;
 
-        private bool isEvergineInitialized;
         private WinUIWindowsSystem windowsSystem;
+        private static bool isEvergineInitialized;
+        private static DX11GraphicsContext graphicsContext;
+        private static SwapChain swapChain;
 
         public EvergineViewHandler(IPropertyMapper mapper, CommandMapper commandMapper = null)
             : base(mapper, commandMapper)
@@ -59,6 +61,7 @@ namespace EverSneaks.MAUI.Evergine
             this.swapChainPanel.PointerPressed += this.OnPlatformViewPointerPressed;
             this.swapChainPanel.PointerMoved += this.OnPlatformViewPointerMoved;
             this.swapChainPanel.PointerReleased += this.OnPlatformViewPointerReleased;
+            this.swapChainPanel.SizeChanged += this.OnSwapChainPanelSizeChanged;
         }
 
         protected override void DisconnectHandler(WinUIGrid platformView)
@@ -70,6 +73,7 @@ namespace EverSneaks.MAUI.Evergine
             this.swapChainPanel.PointerPressed -= this.OnPlatformViewPointerPressed;
             this.swapChainPanel.PointerMoved -= this.OnPlatformViewPointerMoved;
             this.swapChainPanel.PointerReleased -= this.OnPlatformViewPointerReleased;
+            this.swapChainPanel.SizeChanged -= this.OnSwapChainPanelSizeChanged;
         }
 
         private void OnPlatformViewLoaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
@@ -93,27 +97,52 @@ namespace EverSneaks.MAUI.Evergine
             this.VirtualView.EndInteraction();
         }
 
-        private void UpdateApplication(SwapChainPanel swapChainPanel, EvergineView view, string displayName)
+        private void OnSwapChainPanelSizeChanged(object sender, Microsoft.UI.Xaml.SizeChangedEventArgs e)
         {
-            if (view.Application is null || this.isEvergineInitialized)
+            if (e.NewSize.Width <= 0 || e.NewSize.Height <= 0)
             {
                 return;
             }
 
-            var graphicsContext = new DX11GraphicsContext();
-            view.Application.Container.RegisterInstance(graphicsContext);
-            graphicsContext.CreateDevice();
+            swapChain?.ResizeSwapChain((uint)e.NewSize.Width, (uint)e.NewSize.Height);
+        }
 
-            // Create Services
-            this.windowsSystem = new WinUIWindowsSystem();
-            view.Application.Container.RegisterInstance(this.windowsSystem);
+        private void UpdateApplication(SwapChainPanel swapChainPanel, EvergineView view, string displayName)
+        {
+            if (view.Application is null)
+            {
+                return;
+            }
+
+            if (this.windowsSystem == null)
+            {
+                this.windowsSystem = new WinUIWindowsSystem();
+            }
+
+            if (!isEvergineInitialized)
+            {
+                view.Application.Container.RegisterInstance(this.windowsSystem);
+            }
+            else
+            {
+                view.Application.Container.Unregister<WinUIWindowsSystem>();
+                view.Application.Container.RegisterInstance(this.windowsSystem);
+            }
 
             var surface = (WinUISurface)this.windowsSystem.CreateSurface(swapChainPanel);
-            this.ConfigureGraphicsContext(view.Application, surface, displayName);
 
             var clockTimer = Stopwatch.StartNew();
             this.windowsSystem.Run(
-                view.Application.Initialize,
+                () =>
+                {
+                    this.ConfigureGraphicsContext(view.Application, surface, displayName);
+
+                    if (!isEvergineInitialized)
+                    {
+                        view.Application.Initialize();
+                        isEvergineInitialized = true;
+                    }
+                },
                 () =>
                 {
                     var gameTime = clockTimer.Elapsed;
@@ -122,12 +151,16 @@ namespace EverSneaks.MAUI.Evergine
                     view.Application.UpdateFrame(gameTime);
                     view.Application.DrawFrame(gameTime);
                 });
-            this.isEvergineInitialized = true;
         }
 
         private void ConfigureGraphicsContext(global::Evergine.Framework.Application application, WinUISurface surface, string displayName)
         {
-            var graphicsContext = application.Container.Resolve<GraphicsContext>();
+            if (graphicsContext == null)
+            {
+                graphicsContext = new DX11GraphicsContext();
+                graphicsContext.CreateDevice();
+            }
+
             var swapChainDescription = new SwapChainDescription()
             {
                 SurfaceInfo = surface.SurfaceInfo,
@@ -142,13 +175,25 @@ namespace EverSneaks.MAUI.Evergine
                 RefreshRate = 60,
             };
 
-            var swapChain = graphicsContext.CreateSwapChain(swapChainDescription);
+            displayName = string.IsNullOrWhiteSpace(displayName) ? "DefaultDisplay" : displayName;
+
+            swapChain = graphicsContext.CreateSwapChain(swapChainDescription);
             swapChain.VerticalSync = true;
             surface.NativeSurface.SwapChain = swapChain;
 
             var graphicsPresenter = application.Container.Resolve<GraphicsPresenter>();
             var firstDisplay = new Display(surface, swapChain);
-            graphicsPresenter.AddDisplay(displayName, firstDisplay);
+
+            if (!isEvergineInitialized)
+            {
+                graphicsPresenter.AddDisplay(displayName, firstDisplay);
+                application.Container.RegisterInstance(graphicsContext);
+            }
+            else
+            {
+                graphicsPresenter.RemoveDisplay(displayName);
+                graphicsPresenter.AddDisplay(displayName, firstDisplay);
+            }
         }
     }
 }
