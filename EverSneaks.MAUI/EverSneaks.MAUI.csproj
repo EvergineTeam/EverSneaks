@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net10.0-android;net10.0-ios</TargetFrameworks>
     <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
@@ -63,11 +63,11 @@
         <EvergineProfileName>#MAUI#Android</EvergineProfileName>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Evergine.Android" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.OpenAL" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.Targets" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.Targets.Maui" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.Vulkan" Version="2026.5.21.1068-nightly" />
+        <PackageReference Include="Evergine.Android" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.OpenAL" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.Targets" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.Targets.Maui" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.Vulkan" Version="2026.5.26.8" />
       </ItemGroup>
       <ItemGroup>
         <TrimmerRootDescriptor Include="Platforms\Android\linker.xml" />
@@ -84,11 +84,11 @@
         <MtouchInterpreter>-all</MtouchInterpreter>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Evergine.iOS" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.HLSLEverywhere" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.Metal" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.Targets" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.Targets.iOS" Version="2026.5.21.1068-nightly" />
+        <PackageReference Include="Evergine.iOS" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.HLSLEverywhere" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.Metal" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.Targets" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.Targets.iOS" Version="2026.5.26.8" />
       </ItemGroup>
     </When>
     <When Condition="'$(TargetFramework)' == 'net10.0-windows10.0.19041.0'">
@@ -96,13 +96,13 @@
         <EvergineProfileName>#MAUI#Windows</EvergineProfileName>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Evergine.CodeScenes" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.DirectX11" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.HLSLEverywhere" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.XAudio2" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.Targets" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.Targets.Maui" Version="2026.5.21.1068-nightly" />
-        <PackageReference Include="Evergine.WinUI" Version="2026.5.21.1068-nightly" />
+        <PackageReference Include="Evergine.CodeScenes" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.DirectX11" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.HLSLEverywhere" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.XAudio2" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.Targets" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.Targets.Maui" Version="2026.5.26.8" />
+        <PackageReference Include="Evergine.WinUI" Version="2026.5.26.8" />
       </ItemGroup>
     </When>
   </Choose>
