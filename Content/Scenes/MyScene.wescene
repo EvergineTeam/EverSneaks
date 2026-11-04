@@ -156,7 +156,6 @@ Items:
           B: 0.982790232
           G: 0.943362474
           R: 1.0
-        ShadowBias: 0.00499999989
         ShadowDistance: 80.0
         ShadowOpacity: 1.0
         SplitDistance:

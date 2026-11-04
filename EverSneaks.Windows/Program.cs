@@ -48,7 +48,7 @@ namespace EverSneaks.Windows
             // Create Services
             WindowsSystem windowsSystem = new Evergine.Forms.FormsWindowsSystem();
             application.Container.RegisterInstance(windowsSystem);
-            var window = windowsSystem.CreateWindow("EverSneaks - DX11", width, height);
+            var window = windowsSystem.CreateWindow("EverSneaks - DX12", width, height);
 
             ConfigureGraphicsContext(application, window);
 
@@ -76,7 +76,7 @@ namespace EverSneaks.Windows
 
         private static void ConfigureGraphicsContext(Application application, Window window)
         {
-            GraphicsContext graphicsContext = new global::Evergine.DirectX11.DX11GraphicsContext();
+            GraphicsContext graphicsContext = new global::Evergine.DirectX12.DX12GraphicsContext();
             graphicsContext.CreateDevice();
             SwapChainDescription swapChainDescription = new SwapChainDescription()
             {
